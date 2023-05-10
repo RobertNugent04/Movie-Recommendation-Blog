@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
 @section('content')
 <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
-    <div class="flex">
+    <video autoplay muted loop id="video-background">
+        <source src={{ URL('videos/back.mp4') }} type="video/mp4">
+      </video>
+    
+    <div class="flex dark-section">
         <div class="w-full">
             <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 

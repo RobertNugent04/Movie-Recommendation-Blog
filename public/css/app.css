@@ -1275,3 +1275,29 @@ video {
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
+#video-background {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+body {
+  background-color: #000;
+}
+
+.dark-section {
+  width: 75%;
+  float: left;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.light-section {
+  width: 25%;
+  float: right;
+  height: 100%;
+}
+
