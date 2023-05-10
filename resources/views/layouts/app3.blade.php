@@ -13,7 +13,7 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     
     <!-- Styles -->
-    {{-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -54,7 +54,25 @@
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
         <div class="video-background">
-            <div class="dark-overlay"></div>
+            <div class="dark-overlay">
+                <header class="py-6">
+                    <div class="container mx-auto flex justify-start items-center px-6 space-x-4">
+                        <div class="flex items-center">
+                            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 w-8 mr-2" height="70" width="70">
+                            <a href="{{ url('/') }}" class="text-lg font-semibold text-gray-100 no-underline">
+                                RobPat
+                            </a>
+                        </div>
+                        <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
+                            <a class="no-underline hover:underline" href="/">Home</a>
+                            <a class="no-underline hover:underline" href="/movies">Movies</a>
+                        </nav>
+                    </div>
+                </header>
+                <div>
+                    @yield('content')
+                </div>
+            </div>
             <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
                 <source src="{{ asset('videos/back.mp4') }}" type="video/mp4">
             </video>
