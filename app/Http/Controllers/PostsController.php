@@ -54,6 +54,7 @@ class PostsController extends Controller
 
         Post::create([
             'title' => $request->input('title'),
+            'movieName' => $request->input('movieName'), 
             'description' => $request->input('description'),
             'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
             'image_path' => $newImageName,
@@ -99,12 +100,14 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'movieName' => 'required',
             'description' => 'required',
         ]);
 
         Post::where('slug', $slug)
             ->update([
                 'title' => $request->input('title'),
+                'movieName' => $request->input('movieName'),
                 'description' => $request->input('description'),
                 'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id

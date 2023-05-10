@@ -34,6 +34,12 @@
             placeholder="Title..."
             class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
 
+            <input 
+            type="text"
+            name="movieName"
+            placeholder="Movie Name..."
+            class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
+
         <textarea 
             name="description"
             placeholder="Description..."
