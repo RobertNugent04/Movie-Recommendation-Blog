@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\MoviesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\PostsController;
 */
 
 Route::get('/', [PagesController::class, 'index']);
+
+Route::resource('/movies', MoviesController::class);
 
 Route::resource('/blog', PostsController::class);
 

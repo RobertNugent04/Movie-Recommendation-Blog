@@ -19,3 +19,11 @@
     margin-right: auto;
     margin-left: auto;
   }
+
+  .btn-custom {
+    background-color: white;
+    color: orange;
+    border: 3px solid black;
+    border-radius: full;
+    padding: 0.5rem 1rem;
+  }

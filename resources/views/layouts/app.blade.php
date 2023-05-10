@@ -26,6 +26,7 @@
                 </div>
                 <nav class="space-x-4 text-gray-300 text-sm sm:text-base">
                     <a class="no-underline hover:underline" href="/">Home</a>
+                    <a class="no-underline hover:underline" href="/movies">Movies</a>
                     <a class="no-underline hover:underline" href="/blog">Reviews</a>
                     @guest
                         <a class="no-underline hover:underline" href="{{ route('login') }}">{{ __('Login') }}</a>
