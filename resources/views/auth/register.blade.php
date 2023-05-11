@@ -4,7 +4,13 @@
 <main class="sm:container sm:max-w-lg sm:mt-5 min-h-screen">
     <div class="w-full sm:max-w-md mt-3 px-8 py-4 bg-transparent shadow-md overflow-hidden sm:rounded-lg min-h-screen">
         <div class="mt-6">
-            <h2 class="text-sm font-bold text-gray-500">SIGN UP FOR FREE</h2>
+            <div class="flex items-center justify-between">
+                <h2 class="text-sm font-bold text-gray-500">SIGN UP FOR FREE</h2>
+                <div class="text-gray-500">or</div>
+                <a href="{{ route('login.google') }}" class="inline-flex items-center px-4 py-2 bg-blue-500 border border-transparent rounded font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-700 active:bg-blue-900 focus:outline-none focus:border-blue-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+                    <i class="fab fa-google mr-2"></i> Log in with Google
+                </a>
+            </div>            
             <h1 class="mt-2 text-4xl font-bold text-gray-100">Create new Account</h1>
             <p class="mt-4 text-sm font-normal text-gray-500">Already A Member? <a href="/login" class="text-blue-500 hover:text-blue-700">Log In</a></p>
         </div>
@@ -48,7 +54,7 @@
             <div class="flex-wrap">
                 <label class="text-sm font-medium text-gray-100">
                     {{ __('Confirm Password') }}
-                    <input type="password" id="password-confirm" name="password-confirm" required style="background-color: #2B2B36;" class="mt-1 block w-full rounded shadow-sm py-2 px-3 text-base sm:text-sm" autocomplete="new-password">
+                    <input type="password" id="password-confirm" name="password_confirmation" required style="background-color: #2B2B36;" class="mt-1 block w-full rounded shadow-sm py-2 px-3 text-base sm:text-sm" autocomplete="new-password">
                 </label>
             </div>  
             <div>
