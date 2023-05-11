@@ -55,7 +55,7 @@
     <div id="app">
         <div class="video-background">
             <div class="dark-overlay">
-                <header class="py-6">
+                <header class="pt-6">
                     <div class="container mx-auto flex justify-start items-center px-6 space-x-4">
                         <div class="flex items-center">
                             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 w-8 mr-2" height="70" width="70">
