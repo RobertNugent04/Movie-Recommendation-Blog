@@ -63,38 +63,38 @@
   }
 
   .movie-title-link {
-    text-decoration: none;  /* remove underline */
-    color: #040012;  /* dark color for title */
-    font-weight: bold;  /* make title bold */
+    text-decoration: none;
+    color: #040012;
+    font-weight: bold;
   }
 
   .movie-title-link:hover {
-    color: #040012;  /* keep dark color on hover */
+    color: #040012;
   }
 
   .movie-overview {
-    color: #6c757d;  /* dark grey color for overview text */
-    font-size: 0.9em;  /* slightly smaller font size for overview text */
-    line-height: 1.5;  /* increase line height for readability */
-    margin-top: 10px;  /* add some top margin for separation */
+    color: #6c757d;
+    font-size: 0.9em;
+    line-height: 1.5;
+    margin-top: 10px;
   }
 
   .page-link {
-    color: #fff; /* White text */
-    background-color: #040012; /* Dark background */
-    border-color: #040012; /* Dark border */
+    color: #fff;
+    background-color: #040012;
+    border-color: #040012;
   }
 
   .page-link:hover {
-    color: #040012; /* Dark text on hover */
-    background-color: #fff; /* White background on hover */
-    border-color: #040012; /* Dark border on hover */
+    color: #040012;
+    background-color: #fff;
+    border-color: #040012;
   }
 
   .page-item.active .page-link {
-    color: #040012; /* Dark text for active link */
-    background-color: #fff; /* White background for active link */
-    border-color: #040012; /* Dark border for active link */
+    color: #040012;
+    background-color: #fff;
+    border-color: #040012;
   }
   </style>
 </head>
@@ -105,7 +105,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
           <div class="d-flex align-items-center">
             <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-4 w-4 mr-2" height="70" width="70">
-            <a class="navbar-brand" href="{{ url('/') }}">RobPat</a>
+            <a class="navbar-brand font-bold" href="{{ url('/') }}">RobPat</a>
           </div>
       
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
