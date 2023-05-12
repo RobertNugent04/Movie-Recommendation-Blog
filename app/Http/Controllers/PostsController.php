@@ -44,6 +44,7 @@ class PostsController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'movieName' => 'required', 
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
