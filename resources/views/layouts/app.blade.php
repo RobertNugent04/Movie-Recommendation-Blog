@@ -19,6 +19,26 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <style>
+      .dropdown-menu {
+        border: none;
+        border-radius: 0;
+        background:#040012;
+      }
+      
+      .dropdown-item {
+        color: #ffffff;
+      }
+      
+      .dropdown-item:hover {
+        color: #040012;
+        background: #ffffff;
+      }
+      
+      .dropdown-item:not(:last-child) {
+        border-bottom: 1px solid #6c757d;
+      }
+      </style>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
@@ -60,19 +80,30 @@
                     </li>
                   @endif
                 @else
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {{ Auth::user()->name }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="{{ route('logout') }}"
-                             onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{ Auth::user()->name }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                      <a class="dropdown-item" href="/blog">User Dashboard</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/blog">My Blogs</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="/blog">My Reviews</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" href="{{ route('logout') }}"
+                         onclick="event.preventDefault();
+                                  document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
                         {{ csrf_field() }}
                       </form>
-                    </ul>
-                  </li>
+                    </li>
+                  </ul>
+                </li>
                 @endguest
               </ul>
             </div>
