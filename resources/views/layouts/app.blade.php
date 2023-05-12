@@ -38,6 +38,18 @@
       .dropdown-item:not(:last-child) {
         border-bottom: 1px solid #6c757d;
       }
+
+      .search-result {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.search-result:hover {
+  background-color: #e9ecef;
+}
+
       </style>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
@@ -59,6 +71,7 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button style="border: none" class="btn btn-outline-light my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i></i></button>
               </form>
+
       
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -111,6 +124,9 @@
         </div>
       </header>
 
+      <!-- this is where the search results will be inserted -->
+<div id="search-results-container"></div>
+
         <div>
             @yield('content')
         </div>
@@ -120,6 +136,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('js/search.js') }}" defer></script>
 
 </body>
 </html>
