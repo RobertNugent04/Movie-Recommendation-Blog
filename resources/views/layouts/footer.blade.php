@@ -32,25 +32,39 @@
           </div>
   
           <div class="col-md-5 offset-md-1 mb-3">
-            <form>
-              <h5 style="color: white">Subscribe to our newsletter</h5>
-              <p>Monthly digest of what's new and exciting from us.</p>
-              <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                <label for="newsletter1" class="visually-hidden">Email address</label>
-                <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                <button class="btn bg-info" type="button">Subscribe</button>
-              </div>
+            <form action="{{ route('subscribe') }}" method="POST">
+                @csrf
+                <h5 style="color: white">Subscribe to our newsletter</h5>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+                  <label for="newsletter1" class="visually-hidden">Email address</label>
+                  <input id="newsletter1" type="email" name="email" class="form-control" placeholder="Email address" required>
+                  <button class="btn bg-info" type="submit">Subscribe</button>
+                </div>
             </form>
+            
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+            
+            @if (session('warning'))
+                <div class="alert alert-warning">
+                    {{ session('warning') }}
+                </div>
+            @endif
+              
           </div>
       </div>
 
       <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
         <p class="text-muted" style="color: white;">© 2023 Robert Nugent & Patrick Orjieh, Inc. All rights reserved.</p>
         <ul class="list-unstyled d-flex">
-          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-facebook af"></i></a></li>
-          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-twitter af"></i></a></li>
-          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-instagram af"></i></a></li>
-          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-linkedin af"></i></a></li>
+          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-facebook af fa-xl" onmouseover="this.style.color='orange'" onmouseout="this.style.color='#6c757d'"></i></a></li>
+          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-twitter af fa-xl" onmouseover="this.style.color='orange'" onmouseout="this.style.color='#6c757d'"></i></a></li>
+          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-instagram af fa-xl" onmouseover="this.style.color='orange'" onmouseout="this.style.color='#6c757d'"></i></a></li>
+          <li class="me-2"><a class="text-muted" href="#"><i class="fa fa-linkedin af fa-xl" onmouseover="this.style.color='orange'" onmouseout="this.style.color='#6c757d'"></i></a></li>
         </ul>
       </div>
     </footer>
