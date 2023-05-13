@@ -58,7 +58,7 @@ function displayResults(movies, totalPages, query, currentPage) {
         movieElement.appendChild(img);
 
         const mediaBody = document.createElement('div');
-        mediaBody.className = 'media-body';
+        mediaBody.className = 'media-body d-flex flex-column';  // Add flexbox properties
 
         // const movieLink = document.createElement('a');
         // movieLink.href = `/movies/${movie.id}`;
@@ -80,8 +80,12 @@ function displayResults(movies, totalPages, query, currentPage) {
         // mediaBody.appendChild(movieOverview);
         const movieOverview = document.createElement('p');
         movieOverview.innerText = movie.overview;
-        movieOverview.className = 'movie-overview';  // Add class for styling
+        movieOverview.className = 'movie-overview flex-grow-1';  // Add class for styling
         mediaBody.appendChild(movieOverview);
+
+        // Create a new div for the "See more" button and center it
+        const seeMoreButtonDiv = document.createElement('div');
+        seeMoreButtonDiv.className = 'd-flex justify-content-center';
 
         // Create the "See more" button
         const seeMoreButton = document.createElement('a');
@@ -90,7 +94,9 @@ function displayResults(movies, totalPages, query, currentPage) {
         seeMoreButton.className = 'btn';
         seeMoreButton.style.backgroundColor = '#040012';
         seeMoreButton.style.color = 'white';
-        mediaBody.appendChild(seeMoreButton);
+        // Append the "See more" button to the div and the div to the mediaBody
+        seeMoreButtonDiv.appendChild(seeMoreButton);
+        mediaBody.appendChild(seeMoreButtonDiv);
 
         movieElement.appendChild(mediaBody);
         newSearchResultsContainer.appendChild(movieElement);
