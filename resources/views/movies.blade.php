@@ -20,15 +20,19 @@
     @foreach($movies as $movie)
       <div class="col-md-2">
           <div class="card mb-4 rounded-5" style="max-width: 15rem;">
-              <img src="https://image.tmdb.org/t/p/w500/{{ $movie->poster_path }}" class="card-img-top rounded-top" alt="{{ $movie->title }}" style="height: auto; width: 100%;">
+              @if(empty($movie->poster_path))
+                <img src="https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png" class="card-img-top rounded-top" alt="{{ $movie->title }}" style="height: auto; width: 100%;">
+              @else
+                <img src="https://image.tmdb.org/t/p/w500/{{ $movie->poster_path }}" class="card-img-top rounded-top" alt="{{ $movie->title }}" style="height: auto; width: 100%;">
+              @endif
               <div class="card-body">
                 <h6 class="card-title small-title">{{ $movie->title }}</h6>
                 <a style="background-color: #040012; border:none" href="{{ route('movie', ['id' => $movie->id]) }}" class="btn btn-primary btn-sm">View More</a>
               </div>
           </div>
       </div>
-  @endforeach
-</div>
+    @endforeach
+  </div>
 
 
     <!-- Pagination -->
