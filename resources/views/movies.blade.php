@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="container">
+  <!-- Search form -->
+  <form method="GET" action="{{ route('movies') }}">
+    <div class="input-group mb-3 mt-3">
+        <input type="text" class="form-control" placeholder="Search for movies..." name="search">
+        <div class="input-group-append">
+            <button style="background-color: #040012; border:none; color:white"  class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </div>
+</form>
+
     <div class="row">
         @foreach($movies as $movie)
             <div class="col-md-4">
