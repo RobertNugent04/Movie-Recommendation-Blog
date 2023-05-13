@@ -126,7 +126,7 @@
                 <a class="nav-link" href="/movies">Movies</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/blog">Reviews</a>
+                <a class="nav-link" href="/blog">Blogs</a>
               </li>
               @guest
               <li class="nav-item">
