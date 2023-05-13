@@ -17,8 +17,11 @@
     </div>
 
     <!-- Pagination -->
-    <div class="d-flex justify-content-center">{{ $movies->links() }}</div>
-    {{-- <div class="d-flex justify-content-center">{{ $movies->onEachSide(10)->links() }}</div> --}}
+<div class="d-flex justify-content-center">
+  <nav aria-label="Page navigation">
+      {{ $movies->onEachSide(2)->links('vendor.pagination.bootstrap-5', ['paginator' => $movies, 'elements' => ['current', 'first', 'last', 'ellipsis', 'adjacent']]) }}
+  </nav>
+</div>
 
 </div>
 @endsection
