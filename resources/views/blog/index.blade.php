@@ -80,7 +80,7 @@
                     About: {{ $post->movieName }}
                 </h3>
 
-                <img class="rounded-lg" src="{{ asset('images/' . $post->image_path) }}" alt="" style="width: 1280px; height: px;">
+                <img class="rounded-lg" src="{{ asset('images/' . $post->image_path) }}" alt="" style="width: 1280px; height: 310px;">
 
                 <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
                     {{ $post->description }}

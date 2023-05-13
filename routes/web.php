@@ -31,6 +31,7 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get('/', [MovieController::class, 'index'])->name('home');
 Route::get('/movies', [MovieController::class, 'movies'])->name('movies');
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movie');
+// Route::get('/blog', [PostsController::class, 'index'])->name('blog');
 
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);

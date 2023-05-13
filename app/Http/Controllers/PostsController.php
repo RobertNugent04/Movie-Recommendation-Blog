@@ -18,11 +18,13 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('blog.index')
-            ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
-    }
+
+     public function index()
+     {
+         return view('blog.index')
+             ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
+     }
+
 
     /**
      * Show the form for creating a new resource.
