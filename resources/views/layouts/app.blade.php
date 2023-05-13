@@ -96,6 +96,11 @@
     background-color: #fff;
     border-color: #040012;
   }
+
+  .small-title {
+    font-size: 0.8rem;
+}
+
   </style>
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
