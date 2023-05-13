@@ -29,6 +29,14 @@
     </div>
 @endif
 
+@if (Auth::check())
+<form action="/blog/search" method="POST" class="mb-5 text-center mt-5">
+  @csrf
+  <input type="text" name="search" placeholder="Search by Movie Name" class="py-2 px-4 rounded-lg" />
+  <button style="border: none; background-color:black;" class="btn btn-outline-light my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></i></button>
+</form>
+@endif
+
 <div class="row">
     @foreach ($posts as $post)
       <div class="col-md-6 col-lg-6 mb-5">
