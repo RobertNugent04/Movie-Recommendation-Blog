@@ -57,7 +57,7 @@
       {{-- for the blogs over here --}}
       <h1 class="text-center" style="border: 5px solid black;padding: 10px;">Blog Posts</h1>
       @foreach ($posts as $post)
-        <div class="py-15 border-b border-gray-200">
+        <div class="py-15 border-b border-gray-200" style="overflow:hidden;">
           <div class="text-center">
             <h2 class="text-gray-700 font-bold text-3xl pb-4">
               {{ $post->title }}

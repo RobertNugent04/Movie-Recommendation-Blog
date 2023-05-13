@@ -12,7 +12,8 @@
     <div class="pt-15 w-4/5 m-auto">
         <a 
             href="/blog/create"
-            class="bg-blue-500 uppercase text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl">
+            class="bg-blue-500 uppercase text-gray-100 text-xs font-extrabold py-3 px-5 rounded-3xl"
+            style="text-decoration:none;">
             Create post
         </a>
     </div>
@@ -31,7 +32,7 @@
 <div class="row">
     @foreach ($posts as $post)
       <div class="col-md-6 col-lg-6 mb-5">
-        <div class="py-15 border-b border-gray-200">
+        <div class="py-15 border-b border-gray-200" style="overflow:hidden;">
             @if (isset(Auth::user()->id) && Auth::user()->id == $post->user_id)
             <form action="/blog/{{ $post->slug }}" method="POST" style="display: inline;">
                 @csrf
@@ -70,7 +71,7 @@
             <br><br><br><br>
   
             <div class="mt-6">
-              <a id="readButton" href="/blog/{{ $post->slug }}" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: #040012">
+              <a id="readButton" href="/blog/{{ $post->slug }}" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: #040012; text-decoration:none;">
                 Keep Reading
               </a>
             </div>
