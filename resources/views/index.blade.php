@@ -2,15 +2,6 @@
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-    .heading-box {
-      border: 5px solid black;
-      padding: 10px;
-      display: inline-block;
-      margin: 0 auto;
-    }
-</style>
-
 @section('content')
 <div class="container mt-4">
   <div class="row">
@@ -89,7 +80,7 @@
             <br><br><br><br>
   
             <div class="mt-6">
-              <a id="readButton" href="/blog/{{ $post->slug }}" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: #040012">
+              <a id="readButton" href="/blog/{{ $post->slug }}" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: #040012; text-decoration:none;">
                 Keep Reading
               </a>
             </div>
@@ -99,7 +90,7 @@
   
       <br><br>
       <div class="text-center">
-        <a id="readButton" href="/blog" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: blue">
+        <a id="readButton" href="/blog" class="uppercase bg-500 text-gray-100 text-lg font-extrabold py-3 px-6 rounded-3xl" style="background-color: blue; text-decoration:none;">
           View More
         </a>
       </div>
