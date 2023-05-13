@@ -30,7 +30,10 @@ class MovieController extends Controller
     public function movies(Request $request)
     {
         $page = $request->get('page', 1);
-        $url = "https://api.themoviedb.org/3/movie/popular?api_key={$this->apiKey}&language=en-US&page={$page}";
+        $searchQuery = $request->get('search', '');
+        $url = $searchQuery
+            ? "https://api.themoviedb.org/3/search/movie?api_key={$this->apiKey}&language=en-US&query={$searchQuery}&page={$page}"
+            : "https://api.themoviedb.org/3/movie/popular?api_key={$this->apiKey}&language=en-US&page={$page}";
 
         $response = Http::get($url);
         $data = json_decode($response->body());
