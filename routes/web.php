@@ -5,6 +5,8 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +28,14 @@ Route::resource('/blog', PostsController::class);
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->name('home');
+// Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movies.show');
 
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
 Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallback']);
+
+// Route::post('/subscribe', 'SubscriberController@store')->name('subscribe');
+Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
 
 
