@@ -61,6 +61,7 @@
     </div>
   </div>
 </div>
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
       let carouselElement = document.getElementById('carouselMovies');
