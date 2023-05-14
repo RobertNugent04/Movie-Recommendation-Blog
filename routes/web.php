@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,16 @@ Route::resource('reviews', ReviewController::class);
 
 // Route::get('/reviews/{movieId}', [ReviewController::class, 'reviewsForMovie']);
 Route::get('/reviews/{movieId}', [ReviewController::class, 'reviewsForMovie'])->name('reviews.forMovie');
+
+// routes/web.php
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('user_page.dashboard');
+    })->name('dashboard');
+    Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
+});
+
 
 
 
