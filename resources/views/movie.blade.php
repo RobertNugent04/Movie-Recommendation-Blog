@@ -70,11 +70,12 @@
             <button class="btn btn-light mb-4 mt-2 text-dark">
                 <i class="fas fa-comment-alt"></i> Read Review
             </button>
-            <button class="btn btn-light mb-4 text-dark">
+            <a href="https://www.youtube.com/results?search_query={{ urlencode($movie->title . ' trailer') }}" target="_blank" class="btn btn-light mb-4 text-dark">
                 <i class="fas fa-video"></i> Watch Trailer
-            </button>
+            </a>
+            
             <button class="btn btn-light mb-4 text-dark">
-                <i class="fas fa-link"></i> View on TMDb
+                <i class="fas fa-link"></i> View on IMDb
             </button>
         </div>
     </div>
