@@ -37,7 +37,7 @@ class BlogDataSeeder extends Seeder
         'image_path' => '645e5837286c2-bad movie.jpg',
         'created_at' => '2023-04-20 17:47:18',
         'updated_at' => '2023-05-10 19:47:18',
-        'user_id' => 1
+        'user_id' => 2
     ]
 );
 
@@ -50,7 +50,7 @@ Post::create([
     'image_path' => '646121c5d8cf0-matrix.jpg',
     'created_at' => '2023-05-08 10:30:00',
     'updated_at' => '2023-05-08 10:30:00',
-    'user_id' => 1
+    'user_id' => 3
 ]);
 
 Post::create([
@@ -74,7 +74,7 @@ Post::create([
     'image_path' => '6461239a4d15e-inception.jpg',
     'created_at' => '2023-05-12 09:45:00',
     'updated_at' => '2023-05-12 09:45:00',
-    'user_id' => 1
+    'user_id' => 2
 ]);
 
 Post::create([
@@ -86,7 +86,7 @@ Post::create([
     'image_path' => '64612422bbdfd-avengers.jpg',
     'created_at' => '2023-05-14 16:30:00',
     'updated_at' => '2023-05-14 16:30:00',
-    'user_id' => 1
+    'user_id' => 3
 ]);
 
 Post::create([
@@ -110,7 +110,7 @@ Post::create([
     'image_path' => '6461225162d6c-interstellar.jpg',
     'created_at' => '2014-11-07 09:00:00',
     'updated_at' => '2014-12-01 14:30:00',
-    'user_id' => 1
+    'user_id' => 2
 ]);
 
 Post::create([
@@ -122,7 +122,7 @@ Post::create([
     'image_path' => '646123fe6628e-harry potter.jpg',
     'created_at' => '2001-11-16 08:00:00',
     'updated_at' => '2001-11-28 12:45:00',
-    'user_id' => 1
+    'user_id' => 3
 ]);
 
 Post::create([
