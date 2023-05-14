@@ -67,6 +67,15 @@
 
         <div class="col-12 col-md-4 other-content">
             <!-- Other content goes here -->
+            <button class="btn btn-light mb-4 mt-2 text-dark">
+                <i class="fas fa-comment-alt"></i> Read Review
+            </button>
+            <button class="btn btn-light mb-4 text-dark">
+                <i class="fas fa-video"></i> Watch Trailer
+            </button>
+            <button class="btn btn-light mb-4 text-dark">
+                <i class="fas fa-link"></i> View on TMDb
+            </button>
         </div>
     </div>
 </div>
