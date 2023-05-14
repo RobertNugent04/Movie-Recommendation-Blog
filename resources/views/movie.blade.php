@@ -84,9 +84,25 @@
                     <h4 class="text-white text-center">Reviews</h4>
                     @foreach($reviews as $review)
                         <div class="card text-dark bg-light my-2 me-2">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $review->user->name }}</h5>
-                                <p class="card-text">{{ $review->review }}</p>
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <h5 class="card-title">{{ $review->user->name }}</h5>
+                                    <p class="card-text">{{ $review->review }}</p>
+                                </div>
+                                @if(auth()->id() == $review->user_id)
+                                    <div>
+                                        <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-primary bg-dark mb-1" style="border: none">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button style="border: none" type="submit" class="btn btn-danger bg-dark">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     @endforeach

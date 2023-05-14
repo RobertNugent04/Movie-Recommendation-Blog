@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index', 'show', 'reviewsForMovie']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -62,8 +67,18 @@ class ReviewController extends Controller
      */
     public function edit($id)
     {
-        //
+        $review = Review::findOrFail($id);
+        
+        // Ensure the authenticated user is the owner of the review
+        if(auth()->user()->id !== $review->user_id){
+            abort(403, 'Unauthorized action.');
+        }
+
+        return view('reviews.edit', compact('review'));
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -74,7 +89,10 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        $this->authorize('update', $review);
+        // Ensure the authenticated user is the owner of the review
+        if(auth()->user()->id !== $review->user_id){
+            abort(403, 'Unauthorized action.');
+        }
 
         $review->update($request->all());
 
@@ -89,7 +107,10 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        $this->authorize('delete', $review);
+        // Ensure the authenticated user is the owner of the review
+        if(auth()->user()->id !== $review->user_id){
+            abort(403, 'Unauthorized action.');
+        }
 
         $review->delete();
 
