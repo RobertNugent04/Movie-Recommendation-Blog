@@ -63,6 +63,7 @@
             </a>
             </span>
         @endif
+        <br><br>
           <div class="text-center">
             <h2 class="text-gray-700 font-bold text-3xl pb-4">
               {{ $post->title }}
