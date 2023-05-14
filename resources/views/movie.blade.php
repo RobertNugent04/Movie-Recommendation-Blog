@@ -72,11 +72,10 @@
             </button>
             <a href="https://www.youtube.com/results?search_query={{ urlencode($movie->title . ' trailer') }}" target="_blank" class="btn btn-light mb-4 text-dark">
                 <i class="fas fa-video"></i> Watch Trailer
-            </a>
-            
-            <button class="btn btn-light mb-4 text-dark">
+            </a>            
+            <a href="https://www.imdb.com/find?q={{ urlencode($movie->title) }}" target="_blank" class="btn btn-light mb-4 text-dark">
                 <i class="fas fa-link"></i> View on IMDb
-            </button>
+            </a>            
         </div>
     </div>
 </div>
