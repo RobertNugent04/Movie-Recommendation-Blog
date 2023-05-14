@@ -80,6 +80,7 @@
                 <form class="text-center mb-3 d-flex flex-column align-items-center" action="{{ route('reviews.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+                    <input type="hidden" name="movie_name" value="{{ $movie->title }}">
                     <textarea class="ms-2 mb-2 w-100 me-2" style="height: 100px" name="review" required>{{ __('  Make A Review') }}</textarea>
                     <button class="btn btn-light text-dark" type="submit">Submit</button>
                 </form>                

@@ -170,7 +170,7 @@
                       <a class="dropdown-item" href="{{ route('my.blogs') }}">My Blogs</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/blog">My Reviews</a>
+                      <a class="dropdown-item" href="{{ route('my.reviews') }}">My Reviews</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="{{ route('logout') }}"

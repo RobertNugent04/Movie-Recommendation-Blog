@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -127,5 +128,13 @@ class ReviewController extends Controller
         Log::info('Reviews: ', $reviews->toArray());
 
         return response()->json($reviews);
+    }
+    
+    public function myReviews()
+    {
+        $reviews = Review::where('user_id', Auth::user()->id)->get();
+
+
+        return view('user_page.my-reviews', ['reviews' => $reviews]);
     }
 }

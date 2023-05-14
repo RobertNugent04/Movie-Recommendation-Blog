@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/my-blogs', [PostsController::class, 'myBlogs'])->name('my.blogs');
+Route::get('/my-reviews', [ReviewController::class, 'myReviews'])->name('my.reviews');
 
 
 
