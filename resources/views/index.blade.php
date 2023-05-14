@@ -28,7 +28,8 @@
             <h4>Movie Overview</h4>
             <h3 id="title" class="text-4xl font-semibold text-blue mb-4">{{ $carouselMovies[0]->title }}</h3>
             <p id="overview" class="text-lg text-gray-200 leading-relaxed">{{ $carouselMovies[0]->overview }}</p>
-            <a href="{{ route('movie', ['id' => $movie->id]) }}" style="background-color: #040012; border:none" class="btn btn-primary py-2 px-4 rounded-lg mt-4 text-white">See Movie</a>
+            <a id="movieLink" href="{{ route('movie', ['id' => $carouselMovies[0]->id]) }}" style="background-color: #040012; border:none" class="btn btn-primary py-2 px-4 rounded-lg mt-4 text-white">See Movie</a>
+
         </div>
         
       </div>
@@ -106,15 +107,18 @@
       let carouselElement = document.getElementById('carouselMovies');
       let overviewElement = document.getElementById('overview');
       let titleElement = document.getElementById('title');
+      let movieLinkElement = document.getElementById('movieLink');
       let overviews = {!! json_encode(collect($carouselMovies)->pluck('overview')) !!};
       let titles = {!! json_encode(collect($carouselMovies)->pluck('title')) !!};
-
+      let movieIds = {!! json_encode(collect($carouselMovies)->pluck('id')) !!};
 
       carouselElement.addEventListener('slide.bs.carousel', function(event) {
           let currentSlideIndex = event.to;
           overviewElement.innerText = overviews[currentSlideIndex];
           titleElement.innerText = titles[currentSlideIndex];
+          movieLinkElement.href = '/movies/' + movieIds[currentSlideIndex];
       });
   });
 </script>
+
 @endsection
