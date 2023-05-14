@@ -29,6 +29,14 @@
     </div>
 @endif
 
+@if (Auth::check())
+<form action="/blog/search" method="POST" class="mb-5 text-center mt-5">
+  @csrf
+  <input type="text" name="search" placeholder="Search by Movie Name" class="py-2 px-4 rounded-lg" />
+  <button style="border: none; background-color:black;" class="btn btn-outline-light my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></i></button>
+</form>
+@endif
+
 <div class="row">
     @foreach ($posts as $post)
       <div class="col-md-6 col-lg-6 mb-5">
@@ -60,7 +68,7 @@
   
             <img class="rounded-lg blog-image mx-auto" src="{{ asset('images/' . $post->image_path) }}" alt="Blog Image" width="500" height="300">
   
-            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light" style="margin-left:50px;">
               {{ $post->description }}
             </p>
   

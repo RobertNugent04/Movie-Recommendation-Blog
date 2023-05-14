@@ -134,5 +134,21 @@ class PostsController extends Controller
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
     }
+
+    public function search(Request $request)
+{
+    $searchTerm = $request->input('search');
+
+    if ($searchTerm) {
+        $posts = Post::where('movieName', 'LIKE', "%{$searchTerm}%")
+            ->orderBy('updated_at', 'DESC')
+            ->get();
+    } else {
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+    }
+
+    return view('blog.index', compact('posts'));
+}
+
 }
 
