@@ -21,7 +21,7 @@ use App\Http\Controllers\MovieController;
 
 Route::get('/', [PagesController::class, 'index']);
 
-Route::resource('/movies', MoviesController::class);
+// Route::resource('/movies', MoviesController::class);
 
 Route::resource('/blog', PostsController::class);
 

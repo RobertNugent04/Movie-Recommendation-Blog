@@ -71,4 +71,13 @@ class MovieController extends Controller
 
         return view('movies', compact('movies'));
     }
+
+    public function show($id) {
+        $url = "https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=en-US";
+        $response = Http::get($url);
+        $movie = json_decode($response->body());
+    
+        return view('movie', compact('movie'));
+    }
+    
 }

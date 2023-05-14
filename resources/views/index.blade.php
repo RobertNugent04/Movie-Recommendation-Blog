@@ -8,7 +8,7 @@
               <div class="carousel-inner">
                   @foreach($carouselMovies as $index => $movie)
                       <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                          <img src="https://image.tmdb.org/t/p/w500/{{ $movie->backdrop_path }}" class="d-block w-100" alt="{{ $movie->title }}">
+                          <img src="https://image.tmdb.org/t/p/original/{{ $movie->backdrop_path }}" class="d-block w-100" alt="{{ $movie->title }}">
                           <div class="carousel-caption d-none d-md-block">
                               <h5>{{ $movie->title }}</h5>
                           </div>
