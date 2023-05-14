@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -167,6 +168,14 @@ public function sort(Request $request)
     ->with('posts', $posts)
     ->withInput($request->only('sort'));;
 }
+
+public function myBlogs()
+{
+    // $posts = Auth::user()->posts()->get();
+    $posts = Post::where('user_id', Auth::user()->id)->get();
+    return view('user_page.my-blogs', ['blogs' => $posts]);
+}
+
 
 
 }

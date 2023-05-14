@@ -59,6 +59,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/user/update', [UserController::class, 'update'])->name('user.update');
 });
 
+Route::get('/my-blogs', [PostsController::class, 'myBlogs'])->name('my.blogs');
+
+
 
 
 

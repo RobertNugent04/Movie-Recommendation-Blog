@@ -167,7 +167,7 @@
                       <a class="dropdown-item" href="/dashboard">User Dashboard</a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="/blog">My Blogs</a>
+                      <a class="dropdown-item" href="{{ route('my.blogs') }}">My Blogs</a>
                     </li>
                     <li>
                       <a class="dropdown-item" href="/blog">My Reviews</a>
