@@ -34,6 +34,8 @@ Route::get('/movies', [MovieController::class, 'movies'])->name('movies');
 Route::get('/movies/{id}', [MovieController::class, 'show'])->name('movie');
 // Route::get('/blog', [PostsController::class, 'index'])->name('blog');
 Route::post('/blog/search', [PostsController::class, 'search'])->name('search');
+Route::post('/blog/sort', [PostsController::class, 'sort'])->name('sort');
+
 
 
 Route::get('login/google', [LoginController::class, 'redirectToGoogle'])->name('login.google');
