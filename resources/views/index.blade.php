@@ -28,7 +28,7 @@
             <h4>Movie Overview</h4>
             <h3 id="title" class="text-4xl font-semibold text-blue mb-4">{{ $carouselMovies[0]->title }}</h3>
             <p id="overview" class="text-lg text-gray-200 leading-relaxed">{{ $carouselMovies[0]->overview }}</p>
-            <a href="#" style="background-color: #040012; border:none" class="btn btn-primary py-2 px-4 rounded-lg mt-4 text-white">See Movie</a>
+            <a href="{{ route('movie', ['id' => $movie->id]) }}" style="background-color: #040012; border:none" class="btn btn-primary py-2 px-4 rounded-lg mt-4 text-white">See Movie</a>
         </div>
         
       </div>
