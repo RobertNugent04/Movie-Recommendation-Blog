@@ -15,6 +15,7 @@ class BlogDataSeeder extends Seeder
      */
     public function run()
     {
+        //Image from https://assets-prd.ignimgs.com/2022/05/25/starwarssaga-blogroll-1653501853399.jpg
         Post::create([
             'id' => 1,
             'slug' => 'darth-vadar-is-returning',
@@ -27,6 +28,8 @@ class BlogDataSeeder extends Seeder
             'user_id' => 1
         ]
     );
+
+    //Image from https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSX5sUyDInfwKIEw8-p-F37ZpOjK97tWaQaTHrFTXf9ezC2o3rw
     Post::create(
     [
         'id' => 2,
@@ -41,6 +44,7 @@ class BlogDataSeeder extends Seeder
     ]
 );
 
+//Image from https://www.scannain.com/media/matrixposters.0.jpeg
 Post::create([
     'id' => 3,
     'slug' => 'the-matrix-resurrections-analysis',
@@ -53,6 +57,7 @@ Post::create([
     'user_id' => 3
 ]);
 
+//Image from https://hips.hearstapps.com/hmg-prod/amv-prod-cad-assets/images/08q3/267465/bat-tastic-batmans-rides-from-the-dark-knight-up-close-and-personal-feature-car-and-driver-photo-216382-s-original.jpg
 Post::create([
     'id' => 4,
     'slug' => 'the-dark-knight-legacy',
@@ -65,6 +70,7 @@ Post::create([
     'user_id' => 1
 ]);
 
+//Image from https://m.media-amazon.com/images/M/MV5BMTUxMjI3Njk4OF5BMl5BanBnXkFtZTcwNzI2NjQ0Mw@@._V1_SX1500_CR0,0,1500,999_AL_.jpg
 Post::create([
     'id' => 5,
     'slug' => 'inception-mind-bending-thriller',
@@ -77,6 +83,7 @@ Post::create([
     'user_id' => 2
 ]);
 
+// Image from https://image.cnbcfm.com/api/v1/image/105828186-1554212544565avengers-endgame-poster-og-social-crop.jpg?v=1555618903&w=1600&h=900
 Post::create([
     'id' => 6,
     'slug' => 'avengers-endgame-epic-culmination',
@@ -89,6 +96,7 @@ Post::create([
     'user_id' => 3
 ]);
 
+//Image from https://www.hollywoodreporter.com/wp-content/uploads/2021/11/nhw_still_107-H-2021.jpg?w=1024
 Post::create([
     'id' => 7,
     'slug' => 'spiderman-returns-home',
@@ -101,6 +109,7 @@ Post::create([
     'user_id' => 1
 ]);
 
+//Image from https://media.npr.org/assets/img/2014/11/13/fl-17895r_wide-d745edc663a75ddc961f66684631a621dc148566.jpg
 Post::create([
     'id' => 8,
     'slug' => 'the-great-sci-fi-adventure',
@@ -113,6 +122,7 @@ Post::create([
     'user_id' => 2
 ]);
 
+//Image from https://images-na.ssl-images-amazon.com/images/S/pv-target-images/6d0dbdd5d2be872e0d2b59a7cdc7dbebb2fb4303ae3b5cef3b9d3d0804b4650e._RI_.jpg
 Post::create([
     'id' => 9,
     'slug' => 'the-magical-adventure',
@@ -125,6 +135,7 @@ Post::create([
     'user_id' => 3
 ]);
 
+//Image from https://img.buzzfeed.com/buzzfeed-static/static/2014-03/campaign_images/webdr06/25/22/the-real-life-story-that-inspired-up-is-even-more-2-15283-1395801689-35_dblbig.jpg?resize=1200:*
 Post::create([
     'id' => 10,
     'slug' => 'the-heartwarming-animation',
