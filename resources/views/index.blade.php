@@ -34,6 +34,11 @@
   .star-rating {
       color: gold;
   }
+
+  a:hover {
+    color:white;
+      text-decoration: none;
+  }
 </style>
 
 <div class="container mt-4">

@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
   }
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -40,14 +41,6 @@
 @endif
     </div>
 </div>
-
-@if (session()->has('message'))
-    <div class="w-4/5 m-auto mt-10 pl-2">
-        <p class="w-2/6 mb-4 text-gray-50 bg-green-500 rounded-2xl py-4">
-            {{ session()->get('message') }}
-        </p>
-    </div>
-@endif
 
 @if (Auth::check())
 
