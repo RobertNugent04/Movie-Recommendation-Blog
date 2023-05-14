@@ -41,5 +41,8 @@ Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallba
 // Route::post('/subscribe', 'SubscriberController@store')->name('subscribe');
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
+Route::resource('reviews', ReviewController::class);
+
+
 
 
