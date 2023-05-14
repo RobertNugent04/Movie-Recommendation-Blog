@@ -65,7 +65,7 @@ class MovieController extends Controller
 
     // Fetching top rated movies for recommendations
     $recommendations = Review::orderBy('rating', 'desc')
-        ->take(6)
+        ->take(10)
         ->get();
 
     foreach ($recommendations as $recommendation) {
@@ -79,7 +79,7 @@ class MovieController extends Controller
     }
 
     // Fetching blog posts
-    $posts = Post::latest()->paginate(3);
+    $posts = Post::latest()->paginate(2);
 
     return view('index', [
         'carouselMovies' => $carouselMovies,

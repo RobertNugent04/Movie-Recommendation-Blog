@@ -1,25 +1,5 @@
 @extends('layouts.app')
 
-<style>
-  .image-container {
-    width: 70%;
-    height: 310px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-</style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 

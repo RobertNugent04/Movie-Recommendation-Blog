@@ -11,102 +11,15 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>
-    
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
   <!-- Styles -->
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
   <script src="https://kit.fontawesome.com/2d3df2f795.js" crossorigin="anonymous"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <style>
-  .dropdown-menu {
-    border: none;
-    border-radius: 0;
-    background:#040012;
-  }
-  .dropdown-item {
-    color: #ffffff;
-  }
-      
-  .dropdown-item:hover {
-    color: #040012;
-    background: #ffffff;
-  }
-      
-  .dropdown-item:not(:last-child) {
-    border-bottom: 1px solid #6c757d;
-  }
-
-  .search-result {
-    background-color: #f8f9fa;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
-  }
-
-    .search-result:hover {
-      background-color: #e9ecef;
-    }
-
-  .media {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-  }
-  .media img {
-    margin-right: 10px;
-  }
-  .media .media-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .movie-title-link {
-    text-decoration: none;
-    color: #040012;
-    font-weight: bold;
-  }
-
-  .movie-title-link:hover {
-    color: #040012;
-  }
-
-  .movie-overview {
-    color: #6c757d;
-    font-size: 0.9em;
-    line-height: 1.5;
-    margin-top: 10px;
-  }
-
-  .page-link {
-    color: #fff;
-    background-color: #040012;
-    border-color: #040012;
-  }
-
-  .page-link:hover {
-    color: #040012;
-    background-color: #fff;
-    border-color: #040012;
-  }
-
-  .page-item.active .page-link {
-    color: #040012;
-    background-color: #fff;
-    border-color: #040012;
-  }
-
-  .small-title {
-    font-size: 0.8rem;
-}
-
-.profile-img{
-  height: 30px;
-  width: 30px;
-}
-
-  </style>
+  
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
   <div id="app">

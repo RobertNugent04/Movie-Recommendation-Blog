@@ -1,3 +1,22 @@
+<style>
+    .page-link {
+  color: #fff;
+  background-color: #040012;
+  border-color: #040012;
+}
+
+.page-link:hover {
+  color: #040012;
+  background-color: #fff;
+  border-color: #040012;
+}
+
+.page-item.active .page-link {
+  color: #040012;
+  background-color: #fff;
+  border-color: #040012;
+}
+</style>
 @if ($paginator->hasPages())
     <ul class="pagination">
         {{-- Previous Page Link --}}

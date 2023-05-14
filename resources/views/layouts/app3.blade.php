@@ -15,43 +15,8 @@
     <script src="https://kit.fontawesome.com/2d3df2f795.js" crossorigin="anonymous"></script>
     
     <!-- Styles -->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-    <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-        }
-
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            background: no-repeat center center fixed; 
-            background-size: cover;
-        }
-
-        .video-background video {
-            min-width: 100%; 
-            min-height: 100%; 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-        }
-
-        .dark-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(75deg, rgb(4, 0, 18) 60%, transparent);
-            z-index: 2;
-        }
-    </style>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">

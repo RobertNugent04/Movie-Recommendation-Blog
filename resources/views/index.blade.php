@@ -1,45 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-  .movie-recommendation {
-      position: relative;
-      display: inline-block;
-      margin: 10px;
-      border: 1px solid #ccc;
-      box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
-  }
-
-  .movie-recommendation img {
-      width: 200px;
-      height: 200px;
-      object-fit: cover;
-  }
-
-  .movie-recommendation .rating {
-      position: absolute;
-      bottom: 90px;
-      left: 10px;
-      background-color: rgba(0,0,0,0.6);
-      color: #fff;
-      padding: 2px 5px;
-      border-radius: 3px;
-  }
-
-  .movie-recommendation .content {
-      padding: 10px;
-      text-align: center;
-  }
-
-  .star-rating {
-      color: gold;
-  }
-
-  a:hover {
-    color:white;
-      text-decoration: none;
-  }
-</style>
 
 <div class="container mt-4">
   <div class="row">

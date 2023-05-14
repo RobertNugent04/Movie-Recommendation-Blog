@@ -1301,3 +1301,275 @@ body {
   height: 100%;
 }
 
+.dropdown-menu {
+  border: none;
+  border-radius: 0;
+  background:#040012;
+}
+.dropdown-item {
+  color: #ffffff;
+}
+    
+.dropdown-item:hover {
+  color: #040012;
+  background: #ffffff;
+}
+    
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid #6c757d;
+}
+
+.search-result {
+  background-color: #f8f9fa;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+  .search-result:hover {
+    background-color: #e9ecef;
+  }
+
+.media {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.media img {
+  margin-right: 10px;
+}
+.media .media-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.movie-title-link {
+  text-decoration: none;
+  color: #040012;
+  font-weight: bold;
+}
+
+.movie-title-link:hover {
+  color: #040012;
+}
+
+.movie-overview {
+  color: #6c757d;
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+
+.page-link {
+  color: #fff;
+  background-color: #040012;
+  border-color: #040012;
+}
+
+.page-link:hover {
+  color: #040012;
+  background-color: #fff;
+  border-color: #040012;
+}
+
+.page-item.active .page-link {
+  color: #040012;
+  background-color: #fff;
+  border-color: #040012;
+}
+
+.small-title {
+  font-size: 0.8rem;
+}
+
+.profile-img{
+height: 30px;
+width: 30px;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.video-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background: no-repeat center center fixed; 
+  background-size: cover;
+}
+
+.video-background video {
+  min-width: 100%; 
+  min-height: 100%; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(75deg, rgb(4, 0, 18) 60%, transparent);
+  z-index: 2;
+}
+
+.image-container {
+  width: 70%;
+  height: 310px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h2{
+  color:slategray;
+}
+
+.content-container a{
+  text-decoration:none;
+  color:black;
+}
+
+.content-container a:hover{
+  text-decoration:none;
+  color:black;
+}
+
+.flex {
+  display: flex;
+  background-size: cover;
+}
+
+.content-container {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5rem;
+  word-wrap: break-word;
+}
+
+.movie-recommendation {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+
+.movie-recommendation img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.movie-recommendation .rating {
+  position: absolute;
+  bottom: 90px;
+  left: 10px;
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.movie-recommendation .content {
+  padding: 10px;
+  text-align: center;
+}
+
+.star-rating {
+  color: gold;
+}
+
+a:hover {
+color:white;
+  text-decoration: none;
+}
+
+.poster-row {
+  height: 70vh;
+  background-size: 100% 100%;
+}
+.btn-rating {
+  width: 100%;
+  margin-top: 20px;
+}
+.other-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.hide {
+display: none;
+}
+
+.rate {
+float: left;
+height: 46px;
+padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+position: absolute;
+top: -9999px;
+}
+
+.rate:not(:checked) > label {
+float: right;
+width: 1em;
+overflow: hidden;
+white-space: nowrap;
+cursor: pointer;
+font-size: 30px;
+color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+content: '★ ';
+}
+
+.rate > input:checked ~ label {
+color: #ffc700; 
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+color: #deb217;  
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+color: #c59b08;
+}
+
+
+@media (max-width: 576px) {
+      .card-img-top {
+          margin-top: 0;
+      }
+  }
+

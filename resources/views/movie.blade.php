@@ -1,98 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-    .poster-row {
-        height: 70vh;
-        background: url('https://image.tmdb.org/t/p/original/{{ $movie->backdrop_path }}') no-repeat center center;
-        background-size: 100% 100%;
-    }
-    .card-img-top {
-        width: 100%;
-        object-fit: cover;
-        margin-top: -50px;
-    }
-    .btn-rating {
-        width: 100%;
-        margin-top: 20px;
-    }
-    .card {
-        background-color: #040012;
-        border: none;
-    }
-    .other-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 100%;
-    }
 
-    .hide {
-    display: none;
-}
-
-.rate {
-    float: left;
-    height: 46px;
-    padding: 0 10px;
-}
-
-.rate:not(:checked) > input {
-    position: absolute;
-    top: -9999px;
-}
-
-.rate:not(:checked) > label {
-    float: right;
-    width: 1em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 30px;
-    color: #ccc;
-}
-
-.rate:not(:checked) > label:before {
-    content: '★ ';
-}
-
-.rate > input:checked ~ label {
-    color: #ffc700; 
-}
-
-.rate:not(:checked) > label:hover,
-.rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
-}
-
-.rate > input:checked + label:hover,
-.rate > input:checked + label:hover ~ label,
-.rate > input:checked ~ label:hover,
-.rate > input:checked ~ label:hover ~ label,
-.rate > label:hover ~ input:checked ~ label {
-    color: #c59b08;
-}
-
-
-    @media (max-width: 576px) {
-            .card-img-top {
-                margin-top: 0;
-            }
-        }
-</style>
 
 <div class="container-fluid">
     <!-- Row for movie poster -->
-    <div class="row d-none d-md-block poster-row"></div>
+    <div class="row d-none d-md-block poster-row" style="background: url('https://image.tmdb.org/t/p/original/{{ $movie->backdrop_path }}') no-repeat center center; height:70vh; background-size:100% 100%"></div>
 
     <!-- Row for movie content -->
     <div class="row mb-4" style="background-color: #040012;">
         <div class="col-12 col-md-8">
             <!-- The movie card goes here -->
-            <div class="card text-white">
+            <div class="card text-white" style="background-color: #040012; border:none;">
                 <div class="row no-gutters">
                     <div class="col-md-3">
-                        <img src="https://image.tmdb.org/t/p/w500/{{ $movie->poster_path }}" class="card-img-top" alt="{{ $movie->title }}">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ $movie->poster_path }}" class="card-img-top" alt="{{ $movie->title }}" style="width: 100%; object-fit:cover; margin-top: -50px;">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
