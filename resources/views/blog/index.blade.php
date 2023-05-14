@@ -1,5 +1,25 @@
 @extends('layouts.app')
 
+<style>
+  .image-container {
+    width: 70%;
+    height: 310px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @section('content')
@@ -79,11 +99,14 @@
               About: {{ $post->movieName }}
             </h3>
   
-            <img class="rounded-lg blog-image mx-auto" src="{{ asset('images/' . $post->image_path) }}" alt="Blog Image" width="500" height="300">
-  
-            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light" style="margin-left:50px;">
+            <div class="image-container mx-auto">
+              <img class="rounded-lg blog-image" src="{{ asset('images/' . $post->image_path) }}" alt="Blog Image">
+            </div>
+
+            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light" style="margin-left:50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               {{ $post->description }}
             </p>
+
   
             <span class="text-gray-500">
               By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}

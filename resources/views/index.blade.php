@@ -103,7 +103,7 @@
   
             <img class="rounded-lg blog-image mx-auto" src="{{ asset('images/' . $post->image_path) }}" alt="Blog Image" width="1000" height="600">
   
-            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
+            <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light" style="margin-left:50px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
               {{ $post->description }}
             </p>
   
