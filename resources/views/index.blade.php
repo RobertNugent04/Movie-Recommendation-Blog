@@ -96,9 +96,23 @@
       <br><br><br><br>
     </div>
     {{-- for the recommendations over here --}}
-    <div class="col-6">
-
+    <div class="col-6 mt-4">
+      <h4 class="text-center mt-4 mb-4">Recommended Movies</h4>
+      <ul class="list-unstyled">
+          @foreach($recommendedMovies as $movie)
+          <li class="media mb-3">
+            <a style="color: #040012" href="/movies/{{ $movie->id }}" class="d-flex text-decoration-none">
+                <img src="https://image.tmdb.org/t/p/w92/{{ $movie->poster_path }}" class="align-self-start mr-3" alt="{{ $movie->title }}">
+                <div class="media-body">
+                    <h5 class="mt-0 mb-1">{{ $movie->title }}</h5>
+                    <p>{{ \Carbon\Carbon::parse($movie->release_date)->format('Y') }}</p>
+                </div>
+            </a>
+        </li>            
+          @endforeach
+      </ul>
     </div>
+    
   </div>
 </div>
 

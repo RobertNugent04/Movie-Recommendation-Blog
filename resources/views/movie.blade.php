@@ -31,6 +31,48 @@
     display: none;
 }
 
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700; 
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
 
     @media (max-width: 576px) {
             .card-img-top {
@@ -82,8 +124,20 @@
                     <input type="hidden" name="movie_id" value="{{ $movie->id }}">
                     <input type="hidden" name="movie_name" value="{{ $movie->title }}">
                     <textarea class="ms-2 mb-2 w-100 me-2" style="height: 100px" name="review" required>{{ __('  Make A Review') }}</textarea>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" checked/>
+                        <label for="star1" title="text">1 star</label>
+                    </div>
                     <button class="btn btn-light text-dark" type="submit">Submit</button>
-                </form>                
+                </form>           
                 @endauth
                 <div id="reviews" class="d-flex flex-column">
                     <!-- Reviews will be loaded here -->
@@ -98,6 +152,12 @@
                                 <h5 class="card-title">{{ $review->user->name }}</h5>
                                 <div class="review-content" data-id="{{ $review->id }}">
                                     <p class="card-text">{{ $review->review }}</p>
+                                    <div class="rate">
+                                        @for ($i = 5; $i >= 1; $i--)
+                                            <input type="radio" id="star{{$i}}-{{ $review->id }}" name="rate-{{ $review->id }}" value="{{ $i }}" {{ $i == $review->rating ? 'checked' : '' }} disabled/>
+                                            <label for="star{{$i}}-{{ $review->id }}" title="text">{{ $i }} stars</label>
+                                        @endfor
+                                    </div> 
                                 </div>
                             </div>
                             @if(auth()->id() == $review->user_id)
@@ -142,6 +202,18 @@
                 @method('PUT')
                 <div class="modal-body">
                     <textarea id="review-textarea" name="review" required class="w-100" style="height: 200px;"></textarea>
+                    <div class="rate">
+                        <input type="radio" id="modal-star5" name="rate" value="5" />
+                        <label for="modal-star5" title="text">5 stars</label>
+                        <input type="radio" id="modal-star4" name="rate" value="4" />
+                        <label for="modal-star4" title="text">4 stars</label>
+                        <input type="radio" id="modal-star3" name="rate" value="3" />
+                        <label for="modal-star3" title="text">3 stars</label>
+                        <input type="radio" id="modal-star2" name="rate" value="2" />
+                        <label for="modal-star2" title="text">2 stars</label>
+                        <input type="radio" id="modal-star1" name="rate" value="1" checked />
+                        <label for="modal-star1" title="text">1 star</label>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
@@ -178,6 +250,9 @@ editButtons.forEach(button => {
         const reviewContent = document.querySelector(`.review-content[data-id="${reviewId}"] p`);
         const originalText = reviewContent.textContent;
 
+        // Get the rating value
+        const rating = document.querySelector(`input[name="rate-${reviewId}"]:checked`).value;
+
         // Hide the edit and delete buttons
         this.classList.add('hide');
         this.nextElementSibling.parentElement.classList.add('hide');
@@ -187,6 +262,9 @@ editButtons.forEach(button => {
 
         // Set the textarea value
         document.getElementById('review-textarea').value = originalText;
+
+        // Set the rating value
+        document.getElementById(`modal-star${rating}`).checked = true;
 
         // Show the modal
         editReviewModal.show();

@@ -40,10 +40,22 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    // public function store(Request $request)
+    // {
+    //     $review = new Review($request->all());
+    //     $review->user_id = auth()->id();
+    //     $review->save();
+
+    //     return back();
+    // }
     public function store(Request $request)
     {
-        $review = new Review($request->all());
-        $review->user_id = auth()->id();
+        $review = new Review;
+        $review->movie_id = $request->movie_id;
+        $review->movie_name = $request->movie_name;
+        $review->review = $request->review;
+        $review->rating = $request->rate; // Here we access the rating from the form
+        $review->user_id = Auth::id();
         $review->save();
 
         return back();
@@ -69,9 +81,9 @@ class ReviewController extends Controller
     public function edit($id)
     {
         $review = Review::findOrFail($id);
-        
+
         // Ensure the authenticated user is the owner of the review
-        if(auth()->user()->id !== $review->user_id){
+        if (auth()->user()->id !== $review->user_id) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -88,17 +100,26 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Review $review)
+    public function update(Request $request, $id)
     {
-        // Ensure the authenticated user is the owner of the review
-        if(auth()->user()->id !== $review->user_id){
-            abort(403, 'Unauthorized action.');
+        $this->validate($request, [
+            'review' => 'required',
+            'rate' => 'required|integer|min:1|max:5'
+        ]);
+
+        $review = Review::find($id);
+
+        if ($review->user_id != auth()->id()) {
+            return redirect()->back()->with('error', 'Unauthorized operation');
         }
 
-        $review->update($request->all());
+        $review->review = $request->input('review');
+        $review->rating = $request->input('rate');
+        $review->save();
 
-        return back();
+        return redirect()->back()->with('success', 'Review updated successfully');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -109,7 +130,7 @@ class ReviewController extends Controller
     public function destroy(Review $review)
     {
         // Ensure the authenticated user is the owner of the review
-        if(auth()->user()->id !== $review->user_id){
+        if (auth()->user()->id !== $review->user_id) {
             abort(403, 'Unauthorized action.');
         }
 
@@ -129,7 +150,7 @@ class ReviewController extends Controller
 
         return response()->json($reviews);
     }
-    
+
     public function myReviews()
     {
         $reviews = Review::where('user_id', Auth::user()->id)->get();
