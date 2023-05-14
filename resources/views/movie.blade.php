@@ -54,7 +54,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{ $movie->title }}</h5>
+                            <h5 class="card-title fw-bold">{{ $movie->title }}</h5>
                             <p class="card-text">Year: {{ substr($movie->release_date, 0, 4) }}</p>
                             <p class="card-text">Rating: {{ $movie->vote_average }}</p>
                             <p class="card-text">Genres: 
@@ -80,13 +80,16 @@
                 <form class="text-center mb-3 d-flex flex-column align-items-center" action="{{ route('reviews.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="movie_id" value="{{ $movie->id }}">
-                    <textarea class="mb-2 w-100 me-2" style="height: 100px" name="review" required>{{ __('  Make A Review') }}</textarea>
+                    <textarea class="ms-2 mb-2 w-100 me-2" style="height: 100px" name="review" required>{{ __('  Make A Review') }}</textarea>
                     <button class="btn btn-light text-dark" type="submit">Submit</button>
                 </form>                
                 @endauth
                 <div id="reviews" class="d-flex flex-column">
                     <!-- Reviews will be loaded here -->
                     <h4 class="text-white text-center">Reviews</h4>
+                    @if ($reviews->isEmpty())
+                    <p class="text-white text-center">Currently no reviews</p>
+                    @else
                     @foreach($reviews as $review)
                     <div class="card text-dark bg-light my-2 me-2">
                         <div class="card-body d-flex align-items-center justify-content-between">
@@ -113,7 +116,7 @@
                         </div>
                     </div>
                 @endforeach
-                
+                @endif
                 </div>                
             </div>
             <a href="https://www.youtube.com/results?search_query={{ urlencode($movie->title . ' trailer') }}" target="_blank" class="btn btn-light mb-4 text-dark">
