@@ -150,5 +150,24 @@ class PostsController extends Controller
     return view('blog.index', compact('posts'));
 }
 
+public function sort(Request $request)
+{
+    $sortBy = $request->input('sort');
+
+    if ($sortBy === 'title') {
+        $posts = Post::orderBy('title', 'ASC')->get();
+    } else if ($sortBy === 'date') {
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+    } else {
+        // Handle other sorting options if needed
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+    }
+
+    return view('blog.index')
+    ->with('posts', $posts)
+    ->withInput($request->only('sort'));;
+}
+
+
 }
 

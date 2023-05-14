@@ -30,11 +30,24 @@
 @endif
 
 @if (Auth::check())
+
 <form action="/blog/search" method="POST" class="mb-5 text-center mt-5">
   @csrf
   <input type="text" name="search" placeholder="Search by Movie Name" class="py-2 px-4 rounded-lg" />
   <button style="border: none; background-color:black;" class="btn btn-outline-light my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass" style="color:white;"></i></i></button>
 </form>
+
+
+<form action="/blog/sort" method="POST" class="mb-5 text-center mt-5" id="sort-form">
+  @csrf
+  <button type="submit" name="sort" value="title" class="uppercase bg-500 text-gray-100 text-sm font-bold py-2 px-3 rounded-lg" style="background-color: #040012; text-decoration:none;">
+    Sort by Title (A-Z)
+</button>
+<button type="submit" name="sort" value="date" class="uppercase bg-500 text-gray-100 text-sm font-bold py-2 px-3 rounded-lg" style="background-color: #040012; text-decoration:none;">
+    Sort by Date
+</button>
+</form>
+
 @endif
 
 <div class="row">
