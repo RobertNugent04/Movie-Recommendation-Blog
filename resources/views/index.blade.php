@@ -1,6 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+  .movie-recommendation {
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+      border: 1px solid #ccc;
+      box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  }
+
+  .movie-recommendation img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+  }
+
+  .movie-recommendation .rating {
+      position: absolute;
+      bottom: 90px;
+      left: 10px;
+      background-color: rgba(0,0,0,0.6);
+      color: #fff;
+      padding: 2px 5px;
+      border-radius: 3px;
+  }
+
+  .movie-recommendation .content {
+      padding: 10px;
+      text-align: center;
+  }
+
+  .star-rating {
+      color: gold;
+  }
+</style>
+
 <div class="container mt-4">
   <div class="row">
       <div class="col-md-8">
@@ -96,9 +131,26 @@
       <br><br><br><br>
     </div>
     {{-- for the recommendations over here --}}
-    <div class="col-6">
+    <div class="col-6 text-center">
+      <h1 class="text-center" style="border: 5px solid black;padding: 10px;">Recommended For You</h1>
+      @foreach($recommendations as $recommendation)
+      <div class="movie-recommendation">
+          <img src="https://image.tmdb.org/t/p/w500{{ $recommendation->movie_details->poster_path }}" alt="{{ $recommendation->movie_name }}">
+          <div class="rating">
+              @for ($i = 0; $i < $recommendation->rating; $i++)
+                  <span class="star-rating">★</span>
+              @endfor
+          </div>
+          <div class="content">
+              <div class="fw-bold" style="word-wrap: break-word;">{{ $recommendation->movie_name }}</div>
+              <div class="fst-italic">by {{ $recommendation->user->name }}</div>
+              <a style="background-color: #040012; border:none" class="btn btn-primary mb-1 mt-1" href="{{ url('movies/' . $recommendation->movie_details->id) }}">Go to Movie</a>
+          </div>
+      </div>
+    @endforeach
 
     </div>
+    
   </div>
 </div>
 

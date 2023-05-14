@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Post;
 use App\Models\Review;
 
@@ -29,10 +30,32 @@ class MovieController extends Controller
     //     ]);
     // }
 
+    // public function index()
+    // {
+    //     // Fetching movies
+    //     $apiKey = '8295dbb4116ffc5b458cb9378ac368ea';
+    //     $url = 'https://api.themoviedb.org/3/movie/popular?api_key=' . $apiKey . '&language=en-US&page=1';
+    //     $response = Http::get($url);
+    //     $data = json_decode($response->body());
+
+    //     $carouselMovies = array_slice($data->results, 0, 5);
+    //     $upNextMovies = array_slice($data->results, 5, 5);
+
+    //     // Fetching blog posts
+    //     $posts = Post::latest()->paginate(3);
+
+    //     return view('index', [
+    //         'carouselMovies' => $carouselMovies,
+    //         'upNextMovies' => $upNextMovies,
+    //         'posts' => $posts
+    //     ]);
+    // }
+
     public function index()
 {
-    // Fetching movies
     $apiKey = '8295dbb4116ffc5b458cb9378ac368ea';
+
+    // Fetching popular movies
     $url = 'https://api.themoviedb.org/3/movie/popular?api_key=' . $apiKey . '&language=en-US&page=1';
     $response = Http::get($url);
     $data = json_decode($response->body());
@@ -40,15 +63,33 @@ class MovieController extends Controller
     $carouselMovies = array_slice($data->results, 0, 5);
     $upNextMovies = array_slice($data->results, 5, 5);
 
+    // Fetching top rated movies for recommendations
+    $recommendations = Review::orderBy('rating', 'desc')
+        ->take(6)
+        ->get();
+
+    foreach ($recommendations as $recommendation) {
+        $searchUrl = "https://api.themoviedb.org/3/search/movie?api_key={$this->apiKey}&query=" . urlencode($recommendation->movie_name);
+        $searchResponse = Http::get($searchUrl);
+        $searchData = json_decode($searchResponse->body());
+
+        if (count($searchData->results) > 0) {
+            $recommendation->movie_details = $searchData->results[0];
+        }
+    }
+
     // Fetching blog posts
     $posts = Post::latest()->paginate(3);
 
     return view('index', [
         'carouselMovies' => $carouselMovies,
         'upNextMovies' => $upNextMovies,
-        'posts' => $posts
+        'posts' => $posts,
+        'recommendations' => $recommendations
     ]);
 }
+
+
 
     public function movies(Request $request)
     {
@@ -73,13 +114,14 @@ class MovieController extends Controller
         return view('movies', compact('movies'));
     }
 
-    public function show($id) {
+    public function show($id)
+    {
         $url = "https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=en-US";
         $response = Http::get($url);
         $movie = json_decode($response->body());
 
         $reviews = Review::where('movie_id', $id)->with('user')->get();
-    
+
         return view('movie', compact('movie', 'reviews'));
     }
 }
