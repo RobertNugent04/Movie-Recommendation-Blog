@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Review;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -76,8 +77,9 @@ class MovieController extends Controller
         $url = "https://api.themoviedb.org/3/movie/{$id}?api_key={$this->apiKey}&language=en-US";
         $response = Http::get($url);
         $movie = json_decode($response->body());
+
+        $reviews = Review::where('movie_id', $id)->with('user')->get();
     
-        return view('movie', compact('movie'));
+        return view('movie', compact('movie', 'reviews'));
     }
-    
 }

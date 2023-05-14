@@ -7,6 +7,7 @@ use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,11 @@ Route::get('login/google/callback', [LoginController::class, 'handleGoogleCallba
 Route::post('/subscribe', [SubscriberController::class, 'store'])->name('subscribe');
 
 Route::resource('reviews', ReviewController::class);
+
+// Route::get('/reviews/{movieId}', [ReviewController::class, 'reviewsForMovie']);
+Route::get('/reviews/{movieId}', [ReviewController::class, 'reviewsForMovie'])->name('reviews.forMovie');
+
+
 
 
 

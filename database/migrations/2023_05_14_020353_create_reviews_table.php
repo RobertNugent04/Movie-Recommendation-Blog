@@ -16,10 +16,11 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained();
-            $table->foreignId('movie_id')->constrained();
+            $table->string('movie_id'); // Movie's ID from the API
             $table->text('review');
             $table->timestamps();
         });
+        
     }
 
     /**

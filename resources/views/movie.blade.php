@@ -67,9 +67,31 @@
 
         <div class="col-12 col-md-4 other-content">
             <!-- Other content goes here -->
-            <button class="btn btn-light mb-4 mt-2 text-dark">
+            <button class="btn btn-light mb-4 mt-2 text-dark btn-read-review">
                 <i class="fas fa-comment-alt"></i> Read Review
             </button>
+            <div id="review-section" class="mb-4 me-2" style="display: none; height: 300px; overflow-y: scroll;">
+                @auth
+                <form class="text-center mb-3 d-flex flex-column align-items-center" action="{{ route('reviews.store') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="movie_id" value="{{ $movie->id }}">
+                    <textarea class="mb-2" name="review" required>{{ __('Make A Review') }}</textarea>
+                    <button class="btn btn-light text-dark" type="submit">Submit</button>
+                </form>                
+                @endauth
+                <div id="reviews" class="d-flex flex-column">
+                    <!-- Reviews will be loaded here -->
+                    <h4 class="text-white text-center">Reviews</h4>
+                    @foreach($reviews as $review)
+                        <div class="card text-dark bg-light my-2 me-2">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $review->user->name }}</h5>
+                                <p class="card-text">{{ $review->review }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>                
+            </div>
             <a href="https://www.youtube.com/results?search_query={{ urlencode($movie->title . ' trailer') }}" target="_blank" class="btn btn-light mb-4 text-dark">
                 <i class="fas fa-video"></i> Watch Trailer
             </a>            
@@ -79,4 +101,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelector('.btn-read-review').addEventListener('click', function() {
+        const reviewSection = document.querySelector('#review-section');
+        reviewSection.style.display = reviewSection.style.display === 'none' ? 'block' : 'none';
+});
+
+</script>
+
 @endsection

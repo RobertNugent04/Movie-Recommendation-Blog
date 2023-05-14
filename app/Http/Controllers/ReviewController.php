@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Illuminate\Support\Facades\Log;
 
 class ReviewController extends Controller
 {
@@ -34,7 +36,11 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review = new Review($request->all());
+        $review->user_id = auth()->id();
+        $review->save();
+
+        return back();
     }
 
     /**
@@ -66,9 +72,13 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Review $review)
     {
-        //
+        $this->authorize('update', $review);
+
+        $review->update($request->all());
+
+        return back();
     }
 
     /**
@@ -77,8 +87,24 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
-        //
+        $this->authorize('delete', $review);
+
+        $review->delete();
+
+        return back();
+    }
+
+    public function reviewsForMovie($movieId)
+    {
+        $reviews = Review::where('movie_id', $movieId)
+            ->with('user') // Fetch the user that made each review
+            ->get();
+
+        // Log the reviews
+        Log::info('Reviews: ', $reviews->toArray());
+
+        return response()->json($reviews);
     }
 }
