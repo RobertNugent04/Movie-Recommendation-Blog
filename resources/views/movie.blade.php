@@ -27,6 +27,11 @@
         height: 100%;
     }
 
+    .hide {
+    display: none;
+}
+
+
     @media (max-width: 576px) {
             .card-img-top {
                 margin-top: 0;
@@ -75,7 +80,7 @@
                 <form class="text-center mb-3 d-flex flex-column align-items-center" action="{{ route('reviews.store') }}" method="post">
                     @csrf
                     <input type="hidden" name="movie_id" value="{{ $movie->id }}">
-                    <textarea class="mb-2" name="review" required>{{ __('Make A Review') }}</textarea>
+                    <textarea class="mb-2 w-100 me-2" style="height: 100px" name="review" required>{{ __('  Make A Review') }}</textarea>
                     <button class="btn btn-light text-dark" type="submit">Submit</button>
                 </form>                
                 @endauth
@@ -83,29 +88,32 @@
                     <!-- Reviews will be loaded here -->
                     <h4 class="text-white text-center">Reviews</h4>
                     @foreach($reviews as $review)
-                        <div class="card text-dark bg-light my-2 me-2">
-                            <div class="card-body d-flex align-items-center justify-content-between">
-                                <div>
-                                    <h5 class="card-title">{{ $review->user->name }}</h5>
+                    <div class="card text-dark bg-light my-2 me-2">
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="card-title">{{ $review->user->name }}</h5>
+                                <div class="review-content" data-id="{{ $review->id }}">
                                     <p class="card-text">{{ $review->review }}</p>
                                 </div>
-                                @if(auth()->id() == $review->user_id)
-                                    <div>
-                                        <a href="{{ route('reviews.edit', $review->id) }}" class="btn btn-primary bg-dark mb-1" style="border: none">
-                                            <i class="fas fa-edit"></i>
-                                        </a>
-                                        <form action="{{ route('reviews.destroy', $review->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button style="border: none" type="submit" class="btn btn-danger bg-dark">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                @endif
                             </div>
+                            @if(auth()->id() == $review->user_id)
+                                <div>
+                                    <button class="btn btn-primary bg-dark mb-1 edit-review-btn" style="border: none" data-id="{{ $review->id }}">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="border: none" type="submit" class="btn btn-danger bg-dark delete-review-btn">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            @endif
                         </div>
-                    @endforeach
+                    </div>
+                @endforeach
+                
                 </div>                
             </div>
             <a href="https://www.youtube.com/results?search_query={{ urlencode($movie->title . ' trailer') }}" target="_blank" class="btn btn-light mb-4 text-dark">
@@ -118,12 +126,76 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="editReviewModal" tabindex="-1" aria-labelledby="editReviewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editReviewModalLabel">Edit Review</h5>
+            </div>
+            <form id="edit-review-form" method="POST" class="d-inline">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    <textarea id="review-textarea" name="review" required class="w-100" style="height: 200px;"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <script>
     document.querySelector('.btn-read-review').addEventListener('click', function() {
         const reviewSection = document.querySelector('#review-section');
         reviewSection.style.display = reviewSection.style.display === 'none' ? 'block' : 'none';
 });
 
+
+const editButtons = document.querySelectorAll('.edit-review-btn');
+const deleteButtons = document.querySelectorAll('.delete-review-btn');
+const editReviewModal = new bootstrap.Modal(document.getElementById('editReviewModal'), {});
+
+editButtons.forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const reviewId = this.dataset.id;
+        const reviewContent = document.querySelector(`.review-content[data-id="${reviewId}"] p`);
+        const originalText = reviewContent.textContent;
+
+        // Hide the edit and delete buttons
+        this.classList.add('hide');
+        this.nextElementSibling.parentElement.classList.add('hide');
+
+        // Set the form action
+        document.getElementById('edit-review-form').action = "{{ url('reviews') }}/" + reviewId;
+
+        // Set the textarea value
+        document.getElementById('review-textarea').value = originalText;
+
+        // Show the modal
+        editReviewModal.show();
+    });
+});
+
+// When the modal is hidden, show the edit and delete buttons again
+$('#editReviewModal').on('hide.bs.modal', function (e) {
+    editButtons.forEach(button => {
+        button.classList.remove('hide');
+        button.nextElementSibling.parentElement.classList.remove('hide');
+    });
+});
 </script>
 
 @endsection
