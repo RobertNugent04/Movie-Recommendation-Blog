@@ -1,68 +1,83 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-4/5 m-auto text-left">
+<div class="w-4/5 m-auto text-center">
     <div class="py-15">
         <h1 class="text-6xl">
-            Create Post
+            Create A Post
         </h1>
     </div>
 </div>
- 
-@if ($errors->any())
-    <div class="w-4/5 m-auto">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li class="w-1/5 mb-4 text-gray-50 bg-red-700 rounded-2xl py-4">
-                    {{ $error }}
-                </li>
-            @endforeach
-        </ul>
-    </div>
-@endif
 
-<div class="w-4/5 m-auto pt-20">
-    <form 
-        action="/blog"
-        method="POST"
-        enctype="multipart/form-data">
+<div class="m-auto bg-white rounded-lg shadow-lg p-8 md:w-3/4 lg:w-2/5" style="padding: 30px; max-width: 800px;">
+    <form action="/blog" method="POST" enctype="multipart/form-data">
         @csrf
 
-        <input 
-            type="text"
-            name="title"
-            placeholder="Title..."
-            class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
+        <div class="flex flex-col mb-6">
+            <label for="title" class="mb-2 text-lg">Blog Title</label>
+            <input
+                type="text"
+                name="title"
+                id="title"
+                placeholder="Title..."
+                class="w-full px-4 py-2 border rounded-lg"
+            >
+            @error('title')
+            <p style="color:red;" class="text-red-700 text-lg font-bold">{{ $message }}</p>
+            @enderror
+        </div>
 
-            <input 
-            type="text"
-            name="movieName"
-            placeholder="Movie Name..."
-            class="bg-transparent block border-b-2 w-full h-20 text-6xl outline-none">
+        <div class="flex flex-col mb-6">
+            <label for="movieName" class="mb-2 text-lg">Subject</label>
+            <input
+                type="text"
+                name="movieName"
+                placeholder="Movie Name..."
+                class="w-full px-4 py-2 border rounded-lg"
+            >
+            @error('movieName')
+            <p style="color:red;" class="text-red-700 text-lg font-bold">{{ $message }}</p>
+            @enderror
+        </div>
 
-        <textarea 
-            name="description"
-            placeholder="Description..."
-            class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"></textarea>
+        <div class="flex flex-col mb-6">
+            <textarea
+                name="description"
+                placeholder="Description..."
+                class="py-20 bg-transparent block border-b-2 w-full h-60 text-xl outline-none"
+            ></textarea>
+            @error('description')
+            <p style="color:red;" class="text-red-700 text-lg font-bold">{{ $message }}</p>
+            @enderror
+        </div>
+        <br><br>
 
-        <div class="bg-grey-lighter pt-15">
-            <label class="w-44 flex flex-col items-center px-2 py-3 bg-white-rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
+        <div class="bg-grey-lighter mb-6">
+            <label class="flex items-center justify-center px-2 py-3 bg-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer">
                 <span class="mt-2 text-base leading-normal">
                     Select an image
                 </span>
-                <input 
+                <input
                     type="file"
                     name="image"
-                    class="hidden">
+                    class="hidden"
+                >
             </label>
+            @error('image')
+            <p style="color:red;" class="text-red-700 text-lg font-bold">{{ $message }}</p>
+            @enderror
         </div>
 
-        <button    
-            type="submit"
-            class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl">
-            Submit Post
-        </button>
+        <div class="flex justify-center">
+            <button
+                type="submit"
+                class="uppercase mt-15 bg-blue-500 text-gray-100 text-lg font-extrabold py-4 px-8 rounded-3xl" style="background-color: black"
+            >
+                Submit Post
+            </button>
+        </div>
     </form>
 </div>
+<br><br>
 
 @endsection
